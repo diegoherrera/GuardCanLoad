@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Actor } from './Entidades/Actor';
+
 
 @Component({
   selector: 'app-root',
