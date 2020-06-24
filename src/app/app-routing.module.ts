@@ -1,41 +1,47 @@
-import { NgModule }      from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddressComponent } from './address/address.component';
-import { PageNotFoundComponent } 
-from './page-not-found/page-not-found.component';
-
+import { PageNotFoundComponent }
+	from './page-not-found/page-not-found.component';
+import { CargarmodulosGuard } from './cargarmodulo.guard';
+import { ModuleNotFoundComponent } from './module-not-found/module-not-found.component';
 const routes: Routes = [
 	{
-	   path: 'country',
-	   loadChildren: () => import('./country/country.module').then(m => m.CountryModule)
+		path: 'country',
+		loadChildren: () => import('./country/country.module').then(m => m.CountryModule)
 	},
 	{
 		path: 'person',
+		canLoad: [CargarmodulosGuard],
 		loadChildren: () => import('./person/person.module').then(m => m.PersonModule)
-	 },
-	 {
+	},
+	{
 		path: 'address',
 		component: AddressComponent
-	 },	
-	{
-	   path: '',
-	   redirectTo: '/country',
-	   pathMatch: 'full'
 	},
-        {
-	   path: '**',
-	   component: PageNotFoundComponent 
-        }	
+	{
+		path: '',
+		redirectTo: '/country',
+		pathMatch: 'full'
+	},
+	{
+		path: 'modulenofound',
+		component: ModuleNotFoundComponent
+	},
+	{
+		path: '**',
+		component: PageNotFoundComponent
+	}
 ];
 @NgModule({
-  imports: [ 
-          RouterModule.forRoot(routes) 
-  ],
-  exports: [ 
-          RouterModule 
-  ]
+	imports: [
+		RouterModule.forRoot(routes)
+	],
+	exports: [
+		RouterModule
+	]
 })
-export class AppRoutingModule{ 
+export class AppRoutingModule {
 	constructor() {
 		console.log('pase por contructor de AppRoutingModule');
 	}

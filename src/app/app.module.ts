@@ -5,18 +5,21 @@ import { PageNotFoundComponent }
 from './page-not-found/page-not-found.component';
 import { AddressComponent } from './address/address.component';
 import { AppRoutingModule } from './app-routing.module';
+import { CargarmodulosGuard } from './cargarmodulo.guard';
+import { ModuleNotFoundComponent } from './module-not-found/module-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AddressComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ModuleNotFoundComponent
   ],
   imports: [
     BrowserModule, 
     AppRoutingModule
   ],
-  providers: [],
+  providers: [CargarmodulosGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

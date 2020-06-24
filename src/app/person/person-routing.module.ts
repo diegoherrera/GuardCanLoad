@@ -28,4 +28,8 @@ const personRoutes: Routes = [
   imports: [RouterModule.forChild(personRoutes)],
   exports: [RouterModule]
 })
-export class PersonRoutingModule { }
+export class PersonRoutingModule {
+	constructor() {
+		console.log('constructor PersonRoutingModule');
+	}
+ }
